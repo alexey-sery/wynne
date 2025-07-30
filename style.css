@@ -1233,4 +1233,8 @@ body .main button:hover {
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+/* NEW */
+
+.about__items-container:first-child p, .services__items-container:first-child p:not(.list__item-container p), .portfolio__items-container:first-child p, .skills__items p {
+  font-size: 32px;
+}
