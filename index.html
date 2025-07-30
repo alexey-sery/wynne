@@ -575,7 +575,11 @@
     </div>
     <div class="footer">
       <div class="footer__items">
-        <p>© Wynne · 2024</p>
+        <p id="currentYear"></p>
+        <script>
+          const time = new Date().getFullYear();
+          document.getElementById("currentYear").textContent = `© Wynne · ${time}`;
+        </script>
         <div class="footer__items-container">
           <a href="https://t.me/wwyynnee"
             ><img src="src/assets/icons/telegram.png" alt=""
