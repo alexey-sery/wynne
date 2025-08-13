@@ -2,7 +2,19 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#141416">
+    <meta property="og:title" content="Wynne" />
+    <meta property="og:description" content="Frontend-разработчик & Веб-дизайнер" />
+    <meta property="og:image" content="https://wwyynnee.site/preview.png" />
+    <meta property="og:url" content="https://wwyynnee.site" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Wynne" />
+    <meta name="twitter:description" content="Frontend-разработчик & Веб-дизайнер" />
+    <meta name="twitter:image" content="https://wwyynnee.site/preview.png" />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="src/assets/logo/icon.png" />
     <script
@@ -10,13 +22,31 @@
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
-    <script src="https://js.hcaptcha.com/1/api.js?hl=ru" async defer></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    
+       ym(99121868, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/99121868" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     <title>Wynne</title>
   </head>
   <body>
+    <div id="loader">
+        <span class="loader"></span>
+    </div>
     <div class="nav">
       <div class="nav__items">
         <div class="nav__items-container">
@@ -58,6 +88,14 @@
       </div>
     </div>
     <div class="main">
+        <style>
+            @media screen and (max-width: 1023px) {
+                body .main {
+                    height: 100vh;
+                    border-radius: 0 0 100% / 75px;
+                }
+            }
+        </style>
       <p>Wynne</p>
       <span>Frontend-разработчик · Веб-дизайнер</span>
       <div class="main__block">
@@ -80,17 +118,6 @@
             d="M0.873543 53.4511L1 54.4348H1921L1921.13 53.4517C1853.39 35.4028 1715.99 22.0722 1543.93 13.3C1371.85 4.52688 1165.05 0.311275 958.468 0.506477C751.882 0.701678 545.505 5.30769 374.271 14.1784C203.057 23.0482 66.9281 36.1836 0.873543 53.4511Z"
             fill="white"
             stroke="white"
-          />
-        </svg>
-        <svg
-          class="svg-mobile"
-          viewBox="0 0 430 29"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0 29C59.1221 -8.80644 369.366 -10.5174 430 29H0Z"
-            fill="white"
           />
         </svg>
       </div>
@@ -355,7 +382,7 @@
             class="portfolio__items-container__elem"
             data-aos="fade-up-right"
           >
-            <a href="https://pirate-courses.vercel.app/" target="_blank"
+            <a href="https://pirate-courses.ru/" target="_blank"
               >Сливы курсов<img src="src/assets/icons/link.svg" alt="Ссылка"
             /></a>
             <p>Сайт по сливу платных материалов</p>
@@ -372,7 +399,7 @@
             class="portfolio__items-container__elem"
             data-aos="fade-up-right"
           >
-            <a href="http://kamiko.vercel.app/" target="_blank"
+            <a href="https://kamiko.vercel.app/" target="_blank"
               >Kamiko<img src="src/assets/icons/link.svg" alt="Ссылка"
             /></a>
             <p>Сайт для Discord-бота Kamiko</p>
@@ -575,11 +602,7 @@
     </div>
     <div class="footer">
       <div class="footer__items">
-        <p id="currentYear"></p>
-        <script>
-          const time = new Date().getFullYear();
-          document.getElementById("currentYear").textContent = `© Wynne · ${time}`;
-        </script>
+        <p id="year">© Wynne · 2024</p>
         <div class="footer__items-container">
           <a href="https://t.me/wwyynnee"
             ><img src="src/assets/icons/telegram.png" alt=""
@@ -630,25 +653,36 @@
           <span onclick="closeOrder()">✕</span>
         </div>
         <hr />
-        <form id="contactForm" action="send.php" method="post">
-          <input type="text" placeholder="Название компании" required />
-          <input type="text" placeholder="Ваше имя" required />
-          <input type="text" placeholder="Ваш email" required />
-          <input
-            type="text"
-            name="phone"
-            id="phone"
-            placeholder="Ваш телефон"
-          />
-          <textarea name="text" placeholder="Сообщение"></textarea>
-
+        <form action="send.php" method="post" id="form">
+          <input type="text" name="name" minlength="2" placeholder="Ваше имя" required />
+          <input type="email" name="email" placeholder="Ваш email" required />
+          <input type="text" name="phone" id="phone" placeholder="Ваш телефон"  />
+          <textarea name="message" placeholder="Сообщение" required></textarea>
           <div class="h-captcha" data-sitekey="cebabfaa-375a-4464-8806-35c24bfa903e"></div>
-
-          <input type="submit" value="Оформить заказ" />
+          <input type="submit" id="submit" value="Оформить заказ" />
         </form>
-        <p id="error" style="display: none; color: red; font-size: 14px"></p>
       </div>
     </div>
+    <script>
+      document.getElementById('form').addEventListener('submit', function(e) {
+          let token = document.querySelector('[name="h-captcha-response"]').value;
+          
+          if (!token) {
+              e.preventDefault();
+              document.getElementById('submit').style.opacity = ".1";
+              document.getElementById('submit').style.cursor = "no-drop";
+          }
+      });
+      
+      setInterval(() => {
+        let token = document.querySelector('[name="h-captcha-response"]')?.value;
+            if (token) {
+                document.getElementById('submit').style.opacity = "1";
+                document.getElementById('submit').style.cursor = "pointer";
+            }
+        }, 1000);
+    </script>
+    <script src="https://js.hcaptcha.com/1/api.js?hl=ru" async defer></script>
     <script src="src/scripts/list.js" defer></script>
     <script src="src/scripts/menu.js" defer></script>
     <script src="src/scripts/order.js" defer></script>
@@ -665,43 +699,34 @@
       }
     </script>
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        let input = document.getElementById('phone')
-        let inputMask = new Inputmask('+7 (999) 999-99-99')
+        document.addEventListener("DOMContentLoaded", function() {
+            let input = document.getElementById("phone");
+            let inputMask = new Inputmask("+7 (999) 999-99-99");
 
-        inputMask.mask(input)
+            inputMask.mask(input);
 
-        input.addEventListener('blur', function () {
-          if (input.inputmask.unmaskedvalue() === '') {
-            input.value = ''
-          }
-        })
+            input.addEventListener("blur", function() {
+                if (input.inputmask.unmaskedvalue() === "") {
+                    input.value = "";
+                }
+            });
 
-        input.addEventListener('input', function () {
-          if (input.value.length === 0) {
-            input.value = ''
-          }
-        })
-      })
+            input.addEventListener("input", function() {
+                if (input.value.length === 0) {
+                    input.value = "";
+                }
+            });
+        });
     </script>
     <script>
-      document.getElementById('form').addEventListener('submit', function(e) {
-        let token = document.querySelector('[name="h-captcha-response"]')?.value;
-        
-        if (!token) {
-            e.preventDefault();
-            document.getElementById('error').style.display = "block";
-        } else {
-            document.getElementById('error').style.display = "none";
-        }
+        const currentYear = new Date().getFullYear();
+        document.getElementById("year").textContent = `© Wynne · ${currentYear}`;
+    </script>
+    <script>
+      window.addEventListener("load", function() {
+          const loader = document.getElementById("loader");
+          loader.classList.add("hidden");
       });
-      
-      setInterval(() => {
-          let token = document.querySelector('[name="h-captcha-response"]')?.value;
-          if (token) {
-              document.getElementById('error').style.display = "none";
-          }
-      }, 1000);
     </script>
   </body>
 </html>
